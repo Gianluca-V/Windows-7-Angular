@@ -1,0 +1,20 @@
+<div class="window-container" id="window">
+    <div class="window">
+        <div class="window__header">
+            <div class="window__title">{{this.app.appContent.inputs.title}}</div>
+                <div class="window__controllers">
+                    <button class="window__button window__button--minimize" aria-label="Minimize"></button>
+                    <button class="window__button window__button--maximize" aria-label="Maximize"></button>
+                    <button class="window__button window__button--close" aria-label="Close" (click)="closeApp()">X</button>
+                </div>
+        </div>
+    
+        <div class="window__body">
+            <ng-container *ngComponentOutlet="
+            getApp.appContent.component;
+            inputs: getApp.appContent.inputs;
+            " />
+        </div>
+    </div>
+</div>
+

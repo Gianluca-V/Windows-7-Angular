@@ -1,0 +1,10 @@
+<div class="desktop"> 
+    @for (app of appList; track app.component) {
+        <app-desktop-app [app]="app"></app-desktop-app>
+    }
+
+    @for (openApp of openApps(); track openApp.id) {
+        <app-window [app]="openApp"></app-window>
+    }
+
+</div>
