@@ -11,7 +11,7 @@ export class AppListService {
     return [
       {
         component: LeverWariorsAppComponent,
-        inputs: { title:"LeverWarriors",icon:"defaultIcon.png" },
+        inputs: { title:"LeverWarriors",icon:"lever-warriors-icon.png" },
       },
       {
         component: TestAppComponent,
