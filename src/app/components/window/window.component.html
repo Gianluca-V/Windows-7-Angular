@@ -1,5 +1,5 @@
 <div class="window-container {{this.state()}}" [ngClass]="{'resizable':this.state() ==='open', 'draggable':true}"
-    id="window">
+    id="{{windowId}}">
     @if(this.state() === "open"){
         <div class='resizer left'></div>
         <div class='resizer right'></div>

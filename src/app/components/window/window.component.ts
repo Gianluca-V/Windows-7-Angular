@@ -14,6 +14,7 @@ gsap.registerPlugin(Draggable);
 })
 export class WindowComponent implements AfterViewInit, AfterViewChecked {
   @Input() app:any;
+  @Input() windowId:string = "";
   state = signal<WindowState>("open");
   resizable = true;
   openAppsManagerService = inject(OpenAppsManagerService);
@@ -27,13 +28,15 @@ export class WindowComponent implements AfterViewInit, AfterViewChecked {
   
   ngAfterViewInit(): void {
     //Draggable.create("#window")
-    this.resizeService.makeResizableDiv(".resizable");
-    //this.dragService.makeDraggableDiv(".draggable");
+    this.resizeService.makeResizableDiv(`#${this.windowId}`);
+    this.dragService.makeDraggableDivWithTarget(`#${this.windowId}`,".window__header");
+    const window:HTMLElement = document.querySelector(`#${this.windowId}`)!;
   }
   
   ngAfterViewChecked(): void{
     if(this.state() === "open" && !this.resizable){
-      this.resizeService.makeResizableDiv(".resizable");
+      console.log("TEST: "+`#${this.windowId}`)
+      this.resizeService.makeResizableDiv(`#${this.windowId}`);
       this.resizable = true;
     }
   }
