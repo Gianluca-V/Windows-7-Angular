@@ -16,6 +16,17 @@
         margin-left: 10px;
     }
 
+    &__controllers{
+        @include common.flex();
+        width: fit-content;
+        height: 100%;
+    }
+    &__datetime{
+        padding: 10px; 
+        font-size: .8rem;
+        color: #fff;
+        @include common.flex(column,center,center);
+    }
     &__desktop{
         width: 15px;
         height: 100%;

@@ -1,4 +1,12 @@
 <div class="taskbar">
     <img src="../../../assets/images/windows-start-button.jpg" alt="Windows start button" class="taskbar__start">
-    <div class="taskbar__desktop"></div>
+
+    <div class="taskbar__controllers">
+        <div class="taskbar__datetime">
+            <span class="taskbar__time">{{dateTimeService.currentTime()}}</span>
+            <span class="taskbar__date">{{dateTimeService.currentDate()}}</span>
+        </div>
+        <div class="taskbar__desktop"></div>
+    </div>
+    
 </div>
