@@ -16,6 +16,9 @@
     &__start{
         width: 35px;
         margin-left: 10px;
+        &:hover{
+            filter: brightness(1.25) blur(1px);
+        }
     }
     &__apps{
         margin-left: 20px;
