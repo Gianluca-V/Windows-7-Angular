@@ -14,23 +14,27 @@ export class DragService {
     let mouseX = 0;
     let mouseY = 0;
 
-    draggable.addEventListener('mousedown', mouseDown, false);
-    window.addEventListener('mouseup', mouseUp, false);
+    draggable.addEventListener('mousedown', startDrag, false);
+    draggable.addEventListener('touchstart', startDrag, false);
+    window.addEventListener('mouseup', endDrag, false);
+    window.addEventListener('touchend', endDrag, false);  
 
-    function mouseDown(e: any) {
+    function startDrag(e: any) {
       e.preventDefault();
-      posX = e.clientX - draggable.offsetLeft;
-      posY = e.clientY - draggable.offsetTop;
+      posX = (e.clientX || e.touches[0].clientX) - draggable.offsetLeft;
+      posY = (e.clientY || e.touches[0].clientY) - draggable.offsetTop;
       window.addEventListener('mousemove', moveElement, false);
+        window.addEventListener('touchmove', moveElement, false)
     }
 
-    function mouseUp() {
+    function endDrag() {
       window.removeEventListener('mousemove', moveElement, false);
+        window.removeEventListener('touchmove', moveElement, false);
     }
 
     function moveElement(e: any) {
-      mouseX = e.clientX - posX;
-      mouseY = e.clientY - posY;
+      mouseX = (e.clientX || e.touches[0].clientX) - posX;
+      mouseY = (e.clientY || e.touches[0].clientY) - posY;
       draggable.style.left = mouseX + 'px';
       draggable.style.top = mouseY + 'px';
     }
@@ -47,25 +51,29 @@ export class DragService {
     let prevWidth:number;
     let prevHeight:number;
 
-    target.addEventListener('mousedown', mouseDown, false);
-    window.addEventListener('mouseup', mouseUp, false);
+    target.addEventListener('mousedown', startDrag, false);
+    target.addEventListener('touchstart', startDrag, false);
+    window.addEventListener('mouseup', endDrag, false);
+    window.addEventListener('touchend', endDrag, false);
 
-    function mouseDown(e: any) {
+    function startDrag(e: any) {
       e.preventDefault();
-      posX = e.clientX - draggable.offsetLeft;
-      posY = e.clientY - draggable.offsetTop;
+      posX = (e.clientX || e.touches[0].clientX) - draggable.offsetLeft;
+      posY = (e.clientY || e.touches[0].clientY) - draggable.offsetTop;
       prevWidth = draggable.offsetWidth;
       prevHeight = draggable.offsetHeight;
       window.addEventListener('mousemove', moveElement, false);
+      window.addEventListener('touchmove', moveElement, false);
     }
 
-    function mouseUp() {
+    function endDrag() {
       window.removeEventListener('mousemove', moveElement, false);
+      window.removeEventListener('touchmove', moveElement, false);
     }
 
     function moveElement(e: any) {
-      mouseX = e.clientX - posX;
-      mouseY = e.clientY - posY;
+      mouseX = (e.clientX || e.touches[0].clientX) - posX;
+      mouseY = (e.clientY || e.touches[0].clientY) - posY;
       draggable.style.width = prevWidth + 'px';
       draggable.style.height = prevHeight + 'px';
       draggable.style.left = mouseX + 'px';

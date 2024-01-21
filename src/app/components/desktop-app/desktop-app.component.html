@@ -1,4 +1,4 @@
-<div Class="desktop-app" [ngClass]="isSelected ? 'selected' : '' " (click)="selectApp()" (dblclick)="open(this.app)">
+<div Class="desktop-app" [ngClass]="isSelected ? 'selected' : '' " (click)="clickManager()">
     <div class="desktop-app__icon">
         <img src="../../../assets/images/{{this.app.inputs.icon}}" alt="{{this.app.inputs.title}} icon" class="desktop-app__img">
     </div>

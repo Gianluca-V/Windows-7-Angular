@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './calculator-app.component.scss'
 })
 export class CalculatorAppComponent implements AfterViewInit {
+  @Input() title!: String;
+  @Input() icon!: String;
 
   ngAfterViewInit(): void {
     let numKeyReset: boolean = false;

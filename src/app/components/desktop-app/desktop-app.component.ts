@@ -10,18 +10,38 @@ import { NgClass } from '@angular/common';
   standalone: true
 })
 export class DesktopAppComponent {
-  constructor(private el: ElementRef){}
+  constructor(private el: ElementRef) { }
   openAppsManagerService = inject(OpenAppsManagerService);
 
-  @Input() app:any;
+  @Input() app: any;
   isSelected: boolean = false;
 
   selectApp() {
     this.isSelected = true;
   }
 
-  
-  open(app:any){
+  touchTime = 0;
+  clickManager() {
+    this.selectApp();
+
+
+    if (this.touchTime == 0) {
+      // set first click
+      this.touchTime = new Date().getTime();
+    } else {
+      // compare first click to this click and see if they occurred within double click threshold
+      if (((new Date().getTime()) - this.touchTime) < 500) {
+        // double click occurred
+        this.open(this.app);
+        this.touchTime = 0;
+      } else {
+        // not a double click so set as a new first click
+        this.touchTime = new Date().getTime();
+      }
+    }
+  }
+
+  open(app: any) {
     console.log(app)
     this.openAppsManagerService.addApp(app);
   }
