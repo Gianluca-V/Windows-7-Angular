@@ -1,4 +1,5 @@
 @use "../../common.scss" as common;
+@use 'sass:math';
 
 .taskbar{
     width: 100%;
@@ -9,13 +10,19 @@
     bottom: 0;
     box-shadow: 5px 5px 8px 3px #000;
     border-top: solid 1px #cccc;
+    z-index: math.$max-number;
     @include common.flex(row,space-between,center);
 
     &__start{
         width: 35px;
         margin-left: 10px;
     }
-
+    &__apps{
+        margin-left: 20px;
+        @include common.flex(row,flex-start,center);
+        gap:5px;
+        flex:1;
+    }
     &__controllers{
         @include common.flex();
         width: fit-content;
@@ -31,8 +38,19 @@
         width: 15px;
         height: 100%;
         backdrop-filter: blur(1px);
-        border-bottom: solid 1px #fff6;
-        box-shadow: 1px 7px 1px 1px #000, inset 3px 7px 9px -7px #fff;
-        -webkit-box-shadow: 1px 7px 1px 1px #000, inset 3px 7px 9px -7px #fff;
+        background: -moz-linear-gradient(-45deg,  rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0.2) 31%, rgba(0,0,0,0.2) 100%);
+        background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 30%,rgba(0,0,0,0.2) 31%,rgba(0,0,0,0.2) 100%);
+        background: linear-gradient(135deg,  rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 30%,rgba(0,0,0,0.2) 31%,rgba(0,0,0,0.2) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#33000000',GradientType=1 );
+        border: solid 1px rgba(255,255,255,.2);
+        -webkit-box-shadow: -1px 0 0 0 #000;
+        box-shadow: -1px 0 0 0 #000;
+        &:hover {
+            background: -moz-linear-gradient(-45deg,  rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.2) 31%, rgba(255,255,255,0.2) 100%);
+            background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.2) 30%,rgba(255,255,255,255.2) 31%,rgba(255,255,255,0.2) 100%);
+            background: linear-gradient(135deg,  rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.2) 30%,rgba(255,255,255,0.2) 31%,rgba(255,255,255,0.2) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#33000000',GradientType=1 );
+            border: solid 1px rgba(255,255,255,.2);
+        }
     }
 }

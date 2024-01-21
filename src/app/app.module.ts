@@ -8,18 +8,20 @@ import { DesktopAppComponent } from './components/desktop-app/desktop-app.compon
 import { DesktopComponent } from './components/desktop/desktop.component';
 import { provideHttpClient } from '@angular/common/http';
 import { ViewContainerRef } from '@angular/core';
+import { TaskbarOpenAppsComponent } from './components/taskbar-open-apps/taskbar-open-apps.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WindowComponent,
-    DesktopComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TaskbarComponent,
-    DesktopAppComponent
+    DesktopAppComponent,
+    WindowComponent,
+    DesktopComponent,
+    TaskbarOpenAppsComponent
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

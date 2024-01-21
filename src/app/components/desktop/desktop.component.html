@@ -4,15 +4,6 @@
     }
 
     @for (openApp of openApps(); track openApp.id) {
-        <app-window [windowId]="'window-'+openApp.id" [app]="openApp"></app-window>
+        <app-window [windowId]="'window-'+openApp.id" [app]="openApp"></app-window> 
     }
-
-    <!--
-
-        background-image: url('../assets/images/wallpaper.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position-y: center;
-
-     -->
 </div>

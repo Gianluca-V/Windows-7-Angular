@@ -1,6 +1,6 @@
-<div class="window-container {{this.state()}}" [ngClass]="{'resizable':this.state() ==='open', 'draggable':true}"
-    id="{{windowId}}">
-    @if(this.state() === "open"){
+<div class="window-container {{this.openAppsManagerService.getAppState(this.app.id)}}" [ngClass]="{'resizable':this.openAppsManagerService.getAppState(this.app.id) ==='open', 'draggable':true}"
+    id="{{windowId}}" (click)="changeZIndex()">
+    @if(this.openAppsManagerService.getAppState(this.app.id) === "open"){
         <div class='resizer left'></div>
         <div class='resizer right'></div>
         <div class='resizer bottom'></div>
@@ -17,7 +17,7 @@
             <div class="window__controllers">
                 <button class="window__button window__button--minimize" aria-label="Minimize"
                     (click)="minimizeApp()"></button>
-                <button class="window__button window__button--maximize" [attr.aria-label]="this.state() === 'maximized' ? 'Restore' : 'Maximize'"
+                <button class="window__button window__button--maximize" [attr.aria-label]="this.openAppsManagerService.getAppState(this.app.id) === 'maximized' ? 'Restore' : 'Maximize'"
                     (click)="maximizeApp()"></button>
                 <button class="window__button window__button--close" aria-label="Close" (click)="closeApp()">X</button>
             </div>

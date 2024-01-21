@@ -1,12 +1,22 @@
 <div class="taskbar">
-    <img src="../../../assets/images/windows-start-button.jpg" alt="Windows start button" class="taskbar__start">
+    <img src="../../../assets/images/windows-start-button.jpg" alt="Windows start button" class="taskbar__start" (click)="startMenuToggle()">
+
+    @if (startMenu) {
+        <app-start-menu></app-start-menu>
+    }
+
+    <div class="taskbar__apps">
+        @for (openApp of openApps(); track openApp.id) {
+            <app-taskbar-open-apps [app]="openApp"></app-taskbar-open-apps>
+        }
+    </div>
 
     <div class="taskbar__controllers">
         <div class="taskbar__datetime">
             <span class="taskbar__time">{{dateTimeService.currentTime()}}</span>
             <span class="taskbar__date">{{dateTimeService.currentDate()}}</span>
         </div>
-        <div class="taskbar__desktop"></div>
+        <div class="taskbar__desktop" (click)="goToDesktop()"></div>
     </div>
     
 </div>

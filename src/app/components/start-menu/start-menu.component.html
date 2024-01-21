@@ -1,0 +1,29 @@
+<div class="startmenu">
+    <ul class="programs">
+        @for (app of appListService.getApps(); track $index) {
+        <li (click)="this.openAppsManagerService.addApp(app)">
+            <img src="../../../assets/images/{{app.inputs['icon']}}" alt="{{app.inputs['title']}}">
+            {{app.inputs['title']}}
+        </li>
+        }
+    </ul>
+
+    <ul class="links">
+
+        <svg width="0" height="0">
+            <clipPath id="svgClip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M.067.067C.1676 0 .8379 0 .9385.067C1.0055.1676 1.0055.8379.9385.9385C.8379 1.0055.1676 1.0055.067.9385C0 .8379 0 .1676.067.067">
+                </path>
+            </clipPath>
+        </svg>
+
+        <li class="icon"><img src="../../../assets/images/account-picture.png" alt="account-picture"></li>
+        <li><a href="#"><span>Documents</span></a></li>
+        <li><a href="#"><span>Pictures</span></a></li>
+        <li><a href="#"><span>Music</span></a></li>
+        <li><a href="#"><span>Computer</span></a></li>
+        <li><a href="#"><span>Network</span></a></li>
+        <li><a href="#"><span>Connect to</span></a></li>
+    </ul>
+</div>

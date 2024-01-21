@@ -1,0 +1,19 @@
+@use "../../common.scss" as common;
+
+
+.openApp{
+    box-shadow: 1px 7px 1px 1px #000, inset 3px 7px 9px -7px #fff;
+    -webkit-box-shadow: inset 3px 7px 9px -7px #fff;
+    border: 1px solid #fff5;
+    border-radius: 2px;
+    @include common.flex(row,center,center);
+    width: 40px;
+    height: 40px;
+    &:hover{
+        backdrop-filter: blur(2px);
+    }
+    &__img{
+        max-height: 35px;
+        max-width: 35px;
+    }
+}
